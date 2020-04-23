@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>App</title>
+<head>
+<a id="a4" href="#"><h1>App</h1><br/></a>
+</head>
+
+<script src="jquery-3.5.0.min.js"></script>
+<script>
+    function displayContent(){
+        var request = null;
+        if(window.XMLHTTPRequest){
+            request = new XMLHTTPRequest();
+        }
+        
+        request.onreadystatechange = function(){
+            if(request.readyState == 4 && request.status == 200){
+                document.getElementById("result").innerHTML = request.responseText();
+            }
+        };
+        request.open("GET", "http://newsapi.org/v2/top-headlines?sources=google-news&apiKey=23f9a3f2afb04126aa566d12cc718e33", true);
+        request.send();
+    }
+    document.ready(function(){
+        setInterval(function(){
+            App();
+        }, 5000)
+    })
+
+</script>
+</head>
+<body onLoad="makerequest ('https://www.cnn.com/2020/04/22/politics/las-vegas-mayor-social-distancing-cnntv/index.html', 'request')">
+    <div align="center">
+<h1>Headlines</h1>
+<a href="https://phys.org/news/2020-04-usgs-first-ever-comprehensive-geologic-moon.html" onClick="makerequest('https://phys.org/news/2020-04-usgs-first-ever-comprehensive-geologic-moon.html', 'request'); return false;">Headline 1</a><br/>
+<a href="https://www.cnbc.com/2020/04/22/trump-says-he-totally-disagrees-with-georgia-gov-kemps-decision-to-reopen-businesses-in-the-middle-of-coronavirus-pandemic.html" onClick="makerequest('https://www.cnbc.com/2020/04/22/trump-says-he-totally-disagrees-with-georgia-gov-kemps-decision-to-reopen-businesses-in-the-middle-of-coronavirus-pandemic.html', 'request'); return false;">Headline 2</a><br/>
+<a href="https://www.cnn.com/2020/04/22/politics/small-business-loans-congress/index.html" onClick="makerequest('https://www.cnn.com/2020/04/22/politics/small-business-loans-congress/index.html', 'request'); return false;">Headline 3</a><br/>
+<a href="https://www.cnn.com/2020/04/22/politics/read-whistleblower-vaccine-development/index.html" onClick="makerequest('https://www.cnn.com/2020/04/22/politics/read-whistleblower-vaccine-development/index.html', 'request'); return false;">Headline 4</a><br/>
+<div id="request"></div>
+</div>
+</body>
+
+</html>
+
